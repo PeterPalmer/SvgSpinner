@@ -55,6 +55,8 @@ canvas {
 	border: 1px solid silver;
 	width: 600px;
 	height: 600px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
 }
 
 svg {
