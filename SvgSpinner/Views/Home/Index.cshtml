@@ -1,0 +1,33 @@
+﻿@model SvgSpinner.Models.IndexViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>SvgSpinner</title>
+	<link href="@Url.Content("~/Content/SvgSpinner.css")" rel="stylesheet" />
+	<script src="@Url.Content("~/Scripts/raphael.js")"></script>
+	<script src="@Url.Content("~/Scripts/Globals.js")"></script>
+	<script src="@Url.Content("~/Scripts/Coordinate.js")"></script>
+	<script src="@Url.Content("~/Scripts/BezierCurve.js")"></script>
+	<script src="@Url.Content("~/Scripts/MovePenTo.js")"></script>
+	<script src="@Url.Content("~/Scripts/Path.js")"></script>
+	<script src="@Url.Content("~/Scripts/SpinnerModel.js")"></script>
+	<script src="@Url.Content("~/Scripts/HasCallbacks.js")"></script>
+	<script src="@Url.Content("~/Scripts/main.js")"></script>
+</head>
+<body>
+	<div id="content">
+		<canvas id="canvas" height="600" width="600"></canvas>
+		<div id="icons">
+			@foreach (var svg in Model.Icons)
+			{
+				@Html.Raw(svg)
+			}
+		</div>
+
+	</div>
+</body>
+</html>
