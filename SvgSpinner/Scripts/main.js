@@ -29,8 +29,10 @@ var Main;
             canvas.onmousemove = this.cb_onMouseMove;
             canvas.onmousedown = this.cb_onMouseDown;
             canvas.onmouseup = this.cb_onMouseUp;
-            canvas.onmouseleave = this.cb_onMouseLeave;
-            canvas.ontouchmove = this.c_touchMove;
+            canvas.onmouseout = this.cb_onMouseLeave;
+
+            canvas.addEventListener('touchstart', this.cb_onTouchStart, false);
+            canvas.addEventListener('touchmove', this.cb_onTouchMove, false);
         };
 
         SvgSpinner.prototype.SetupCanvas = function () {
@@ -82,7 +84,13 @@ var Main;
             this.spinnerModel.CenterAndScale();
         };
 
-        SvgSpinner.prototype.c_touchMove = function (ev) {
+        SvgSpinner.prototype.cb_onTouchStart = function (ev) {
+            // Prevent event bubbling
+            ev.preventDefault();
+            return false;
+        };
+
+        SvgSpinner.prototype.cb_onTouchMove = function (ev) {
             this.HandleMovement(ev.targetTouches.item(0).pageX, ev.targetTouches.item(0).pageY);
         };
 

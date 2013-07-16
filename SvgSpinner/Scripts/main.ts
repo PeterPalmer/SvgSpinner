@@ -29,9 +29,10 @@ module Main {
             canvas.onmousemove = this.cb_onMouseMove;
             canvas.onmousedown = this.cb_onMouseDown;
             canvas.onmouseup = this.cb_onMouseUp;
-            canvas.onmouseleave = this.cb_onMouseLeave;
-            canvas.ontouchmove = this.c_touchMove;
-            //canvas.addEventListener("touchmove", <UIEvent>((theTouchEvent: Main.TouchEvent) => alert("touchy")));
+            canvas.onmouseout = this.cb_onMouseLeave;
+
+            canvas.addEventListener('touchstart', this.cb_onTouchStart, false);
+            canvas.addEventListener('touchmove', this.cb_onTouchMove, false);
         }
 
         public SetupCanvas(): void {
@@ -83,7 +84,13 @@ module Main {
             this.spinnerModel.CenterAndScale();
         }
 
-        private c_touchMove(ev: TouchEvent): void {
+        private cb_onTouchStart(ev: TouchEvent): boolean {
+            // Prevent event bubbling
+            ev.preventDefault();
+            return false;
+        }
+
+        private cb_onTouchMove(ev: TouchEvent): void {
             this.HandleMovement(ev.targetTouches.item(0).pageX, ev.targetTouches.item(0).pageY);
         }
 
