@@ -197,6 +197,13 @@
       <DependentUpon>SpinnerModel.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="UnitTests\tsUnit.ts" />
+    <TypeScriptCompile Include="Scripts\TouchEvent.ts" />
+    <Content Include="Scripts\TouchEvent.js">
+      <DependentUpon>TouchEvent.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\TouchEvent.min.js">
+      <DependentUpon>TouchEvent.ts</DependentUpon>
+    </Content>
     <Content Include="UnitTests\app.css" />
     <TypeScriptCompile Include="UnitTests\CoordinateTests.ts" />
     <Content Include="UnitTests\CoordinateTests.js">
@@ -296,7 +303,11 @@
       <DependentUpon>MovePenTo.ts</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Scripts\TouchEvent.js.map">
+      <DependentUpon>TouchEvent.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

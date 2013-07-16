@@ -1,3 +1,4 @@
+/// <reference path="TouchEvent.ts" />
 /// <reference path="HasCallbacks.ts" />
 /// <reference path="Globals.ts" />
 /// <reference path="SpinnerModel.ts" />
@@ -28,6 +29,9 @@ module Main {
             canvas.onmousemove = this.cb_onMouseMove;
             canvas.onmousedown = this.cb_onMouseDown;
             canvas.onmouseup = this.cb_onMouseUp;
+            canvas.onmouseleave = this.cb_onMouseLeave;
+            canvas.ontouchmove = this.c_touchMove;
+            //canvas.addEventListener("touchmove", <UIEvent>((theTouchEvent: Main.TouchEvent) => alert("touchy")));
         }
 
         public SetupCanvas(): void {
@@ -45,7 +49,7 @@ module Main {
             this.intervalId = setInterval(this.cb_tick, Globals.frame_time);
         }
 
-        private cb_tick() {
+        private cb_tick(): void {
             this.ctx.clearRect(Globals.width / -2, Globals.height / -2, Globals.width, Globals.height);
             this.spinnerModel.Draw(this.ctx);
         }
@@ -79,29 +83,36 @@ module Main {
             this.spinnerModel.CenterAndScale();
         }
 
-        private cb_onMouseMove(ev: MouseEvent) {
-            var x = ev.layerX - this.ctx.canvas.offsetLeft - Globals.width / 2;
-            var y = ev.layerY - this.ctx.canvas.offsetTop - Globals.height / 2;
+        private c_touchMove(ev: TouchEvent): void {
+            this.HandleMovement(ev.targetTouches.item(0).pageX, ev.targetTouches.item(0).pageY);
+        }
 
+        private cb_onMouseMove(ev: MouseEvent): void {
+            this.HandleMovement(ev.layerX - this.ctx.canvas.offsetLeft - Globals.width / 2, ev.layerY - this.ctx.canvas.offsetTop - Globals.height / 2);
+        }
+
+        private HandleMovement(x: number, y: number): void {
             // Ignore small movements
             if (this.mouseXQueue.length != 0 &&
-                Math.abs(this.mouseXQueue[this.mouseXQueue.length - 1] - x) < 6 &&
-                Math.abs(this.mouseYQueue[this.mouseYQueue.length - 1] - y) < 6) {
+                Math.abs(this.mouseXQueue[this.mouseXQueue.length - 1] - x) < 3 &&
+                Math.abs(this.mouseYQueue[this.mouseYQueue.length - 1] - y) < 3) {
                 return;
             }
 
             this.mouseXQueue.push(x);
             this.mouseYQueue.push(y);
 
+            if (this.mouseXQueue.length < 8) { return; }
+
             // Update speed
             Globals.yawSpeed = 0.0003 * (this.mouseXQueue[this.mouseXQueue.length - 1] - this.mouseXQueue[0]);
             Globals.pitchSpeed = 0.0003 * (this.mouseYQueue[0] - this.mouseYQueue[this.mouseYQueue.length - 1]);
 
             // Limit speed
-            if (Globals.yawSpeed > 0.08) Globals.yawSpeed = 0.08;
-            if (Globals.yawSpeed < -0.08) Globals.yawSpeed = -0.08;
-            if (Globals.pitchSpeed > 0.08) Globals.pitchSpeed = 0.08;
-            if (Globals.pitchSpeed < -0.08) Globals.pitchSpeed = -0.08;
+            if (Globals.yawSpeed > 0.08) Globals.yawSpeed = 0.08 + (Globals.yawSpeed - 0.08) / 2;
+            if (Globals.yawSpeed < -0.08) Globals.yawSpeed = -0.08 + (Globals.yawSpeed + 0.08) / 2;
+            if (Globals.pitchSpeed > 0.08) Globals.pitchSpeed = 0.08 + (Globals.pitchSpeed - 0.08) / 3;
+            if (Globals.pitchSpeed < -0.08) Globals.pitchSpeed = -0.08 + (Globals.pitchSpeed + 0.08) / 3;
 
             // Limit queue length
             if (this.mouseXQueue.length > 8) {
@@ -110,14 +121,19 @@ module Main {
             }
         }
 
-        private cb_onMouseDown(ev: MouseEvent) {
+        private cb_onMouseDown(ev: MouseEvent): void {
             // Pause
             clearInterval(this.intervalId);
         }
 
-        private cb_onMouseUp(ev: MouseEvent) {
+        private cb_onMouseUp(ev: MouseEvent): void {
             // Continue
             this.intervalId = setInterval(this.cb_tick, Globals.frame_time);
+        }
+
+        private cb_onMouseLeave(ev: MouseEvent): void {
+            this.mouseXQueue = [];
+            this.mouseYQueue = [];
         }
 
     }

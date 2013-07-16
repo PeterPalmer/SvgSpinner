@@ -4,6 +4,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+/// <reference path="TouchEvent.ts" />
 /// <reference path="HasCallbacks.ts" />
 /// <reference path="Globals.ts" />
 /// <reference path="SpinnerModel.ts" />
@@ -28,6 +29,8 @@ var Main;
             canvas.onmousemove = this.cb_onMouseMove;
             canvas.onmousedown = this.cb_onMouseDown;
             canvas.onmouseup = this.cb_onMouseUp;
+            canvas.onmouseleave = this.cb_onMouseLeave;
+            canvas.ontouchmove = this.c_touchMove;
         };
 
         SvgSpinner.prototype.SetupCanvas = function () {
@@ -79,29 +82,38 @@ var Main;
             this.spinnerModel.CenterAndScale();
         };
 
-        SvgSpinner.prototype.cb_onMouseMove = function (ev) {
-            var x = ev.layerX - this.ctx.canvas.offsetLeft - Globals.width / 2;
-            var y = ev.layerY - this.ctx.canvas.offsetTop - Globals.height / 2;
+        SvgSpinner.prototype.c_touchMove = function (ev) {
+            this.HandleMovement(ev.targetTouches.item(0).pageX, ev.targetTouches.item(0).pageY);
+        };
 
-            if (this.mouseXQueue.length != 0 && Math.abs(this.mouseXQueue[this.mouseXQueue.length - 1] - x) < 6 && Math.abs(this.mouseYQueue[this.mouseYQueue.length - 1] - y) < 6) {
+        SvgSpinner.prototype.cb_onMouseMove = function (ev) {
+            this.HandleMovement(ev.layerX - this.ctx.canvas.offsetLeft - Globals.width / 2, ev.layerY - this.ctx.canvas.offsetTop - Globals.height / 2);
+        };
+
+        SvgSpinner.prototype.HandleMovement = function (x, y) {
+            if (this.mouseXQueue.length != 0 && Math.abs(this.mouseXQueue[this.mouseXQueue.length - 1] - x) < 3 && Math.abs(this.mouseYQueue[this.mouseYQueue.length - 1] - y) < 3) {
                 return;
             }
 
             this.mouseXQueue.push(x);
             this.mouseYQueue.push(y);
 
+            if (this.mouseXQueue.length < 8) {
+                return;
+            }
+
             // Update speed
             Globals.yawSpeed = 0.0003 * (this.mouseXQueue[this.mouseXQueue.length - 1] - this.mouseXQueue[0]);
             Globals.pitchSpeed = 0.0003 * (this.mouseYQueue[0] - this.mouseYQueue[this.mouseYQueue.length - 1]);
 
             if (Globals.yawSpeed > 0.08)
-                Globals.yawSpeed = 0.08;
+                Globals.yawSpeed = 0.08 + (Globals.yawSpeed - 0.08) / 2;
             if (Globals.yawSpeed < -0.08)
-                Globals.yawSpeed = -0.08;
+                Globals.yawSpeed = -0.08 + (Globals.yawSpeed + 0.08) / 2;
             if (Globals.pitchSpeed > 0.08)
-                Globals.pitchSpeed = 0.08;
+                Globals.pitchSpeed = 0.08 + (Globals.pitchSpeed - 0.08) / 3;
             if (Globals.pitchSpeed < -0.08)
-                Globals.pitchSpeed = -0.08;
+                Globals.pitchSpeed = -0.08 + (Globals.pitchSpeed + 0.08) / 3;
 
             if (this.mouseXQueue.length > 8) {
                 this.mouseXQueue.shift();
@@ -117,6 +129,11 @@ var Main;
         SvgSpinner.prototype.cb_onMouseUp = function (ev) {
             // Continue
             this.intervalId = setInterval(this.cb_tick, Globals.frame_time);
+        };
+
+        SvgSpinner.prototype.cb_onMouseLeave = function (ev) {
+            this.mouseXQueue = [];
+            this.mouseYQueue = [];
         };
         return SvgSpinner;
     })(Main.HasCallbacks);
