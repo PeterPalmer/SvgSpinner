@@ -63,6 +63,11 @@ var Main;
             var node = this.selectedIcon.firstElementChild;
 
             while (node) {
+                if (node.nodeName != "path") {
+                    node = node.nextElementSibling;
+                    continue;
+                }
+
                 var fillColor = node.attributes['fill'].value;
                 var strokeColor = node.attributes['stroke'].value;
 
