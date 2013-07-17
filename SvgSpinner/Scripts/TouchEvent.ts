@@ -25,18 +25,3 @@ interface TouchEvent extends UIEvent {
     shiftKey: bool;
     initTouchEvent(type: string, canBubble: bool, cancelable: bool, view: AbstractView, detail: number, ctrlKey: bool, altKey: bool, shiftKey: bool, metaKey: bool, touches: TouchList, targetTouches: TouchList, changedTouches: TouchList);
 };
-
-    declare var TouchEvent: {
-    prototype: TouchEvent;
-    new (): TouchEvent;
-}
-
-//
-// add touch events to HTMLElement
-//
-interface HTMLElement extends Element, MSHTMLElementRangeExtensions, ElementCSSInlineStyle, MSEventAttachmentTarget, MSHTMLElementExtensions, MSNodeExtensions {
-    ontouchstart: (ev: TouchEvent) => any;
-    ontouchmove: (ev: TouchEvent) => any;
-    ontouchend: (ev: TouchEvent) => any;
-    ontouchcancel: (ev: TouchEvent) => any;
-}

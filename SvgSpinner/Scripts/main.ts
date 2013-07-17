@@ -1,3 +1,4 @@
+/// <reference path="IPoint.ts" />
 /// <reference path="TouchEvent.ts" />
 /// <reference path="HasCallbacks.ts" />
 /// <reference path="Globals.ts" />
@@ -11,8 +12,7 @@ module Main {
         private ctx: CanvasRenderingContext2D;
         private intervalId: number;
         private spinnerModel: Shapes.SpinnerModel;
-        private mouseXQueue: number[] = [];
-        private mouseYQueue: number[] = [];
+        private mousePosQueue: Main.IPoint[] = [];
 
         constructor(private document: Document) {
             super();
@@ -100,20 +100,21 @@ module Main {
 
         private HandleMovement(x: number, y: number): void {
             // Ignore small movements
-            if (this.mouseXQueue.length != 0 &&
-                Math.abs(this.mouseXQueue[this.mouseXQueue.length - 1] - x) < 3 &&
-                Math.abs(this.mouseYQueue[this.mouseYQueue.length - 1] - y) < 3) {
+            if (this.mousePosQueue.length != 0 &&
+                Math.abs(this.mousePosQueue[this.mousePosQueue.length - 1].X - x) < 3 &&
+                Math.abs(this.mousePosQueue[this.mousePosQueue.length - 1].Y - y) < 3) {
                 return;
             }
 
-            this.mouseXQueue.push(x);
-            this.mouseYQueue.push(y);
-
-            if (this.mouseXQueue.length < 8) { return; }
+            this.mousePosQueue.push({ X: x, Y: y });
+            if (this.mousePosQueue.length < 2) { return; }
+            
+            var previousYawSpeed = Globals.yawSpeed;
+            var previousPitchSpeed = Globals.pitchSpeed;
 
             // Update speed
-            Globals.yawSpeed = 0.0003 * (this.mouseXQueue[this.mouseXQueue.length - 1] - this.mouseXQueue[0]);
-            Globals.pitchSpeed = 0.0003 * (this.mouseYQueue[0] - this.mouseYQueue[this.mouseYQueue.length - 1]);
+            Globals.yawSpeed = 0.0003 * (this.mousePosQueue[this.mousePosQueue.length - 1].X - this.mousePosQueue[0].X);
+            Globals.pitchSpeed = 0.0003 * (this.mousePosQueue[0].Y - this.mousePosQueue[this.mousePosQueue.length - 1].Y);
 
             // Limit speed
             if (Globals.yawSpeed > 0.08) Globals.yawSpeed = 0.08 + (Globals.yawSpeed - 0.08) / 2;
@@ -121,10 +122,12 @@ module Main {
             if (Globals.pitchSpeed > 0.08) Globals.pitchSpeed = 0.08 + (Globals.pitchSpeed - 0.08) / 3;
             if (Globals.pitchSpeed < -0.08) Globals.pitchSpeed = -0.08 + (Globals.pitchSpeed + 0.08) / 3;
 
+            Globals.yawSpeed = (Globals.yawSpeed + previousYawSpeed) / 2;
+            Globals.pitchSpeed = (Globals.pitchSpeed + previousPitchSpeed) / 2;
+
             // Limit queue length
-            if (this.mouseXQueue.length > 8) {
-                this.mouseXQueue.shift();
-                this.mouseYQueue.shift();
+            if (this.mousePosQueue.length > 8) {
+                this.mousePosQueue.shift();
             }
         }
 
@@ -139,8 +142,7 @@ module Main {
         }
 
         private cb_onMouseLeave(ev: MouseEvent): void {
-            this.mouseXQueue = [];
-            this.mouseYQueue = [];
+            this.mousePosQueue = [];
         }
 
     }

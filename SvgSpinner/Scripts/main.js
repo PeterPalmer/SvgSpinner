@@ -4,6 +4,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+/// <reference path="IPoint.ts" />
 /// <reference path="TouchEvent.ts" />
 /// <reference path="HasCallbacks.ts" />
 /// <reference path="Globals.ts" />
@@ -15,8 +16,7 @@ var Main;
         function SvgSpinner(document) {
             _super.call(this);
             this.document = document;
-            this.mouseXQueue = [];
-            this.mouseYQueue = [];
+            this.mousePosQueue = [];
             this.selectedIcon = null;
         }
         SvgSpinner.prototype.RegisterEventHandlers = function () {
@@ -99,20 +99,21 @@ var Main;
         };
 
         SvgSpinner.prototype.HandleMovement = function (x, y) {
-            if (this.mouseXQueue.length != 0 && Math.abs(this.mouseXQueue[this.mouseXQueue.length - 1] - x) < 3 && Math.abs(this.mouseYQueue[this.mouseYQueue.length - 1] - y) < 3) {
+            if (this.mousePosQueue.length != 0 && Math.abs(this.mousePosQueue[this.mousePosQueue.length - 1].X - x) < 3 && Math.abs(this.mousePosQueue[this.mousePosQueue.length - 1].Y - y) < 3) {
                 return;
             }
 
-            this.mouseXQueue.push(x);
-            this.mouseYQueue.push(y);
-
-            if (this.mouseXQueue.length < 8) {
+            this.mousePosQueue.push({ X: x, Y: y });
+            if (this.mousePosQueue.length < 2) {
                 return;
             }
+
+            var previousYawSpeed = Globals.yawSpeed;
+            var previousPitchSpeed = Globals.pitchSpeed;
 
             // Update speed
-            Globals.yawSpeed = 0.0003 * (this.mouseXQueue[this.mouseXQueue.length - 1] - this.mouseXQueue[0]);
-            Globals.pitchSpeed = 0.0003 * (this.mouseYQueue[0] - this.mouseYQueue[this.mouseYQueue.length - 1]);
+            Globals.yawSpeed = 0.0003 * (this.mousePosQueue[this.mousePosQueue.length - 1].X - this.mousePosQueue[0].X);
+            Globals.pitchSpeed = 0.0003 * (this.mousePosQueue[0].Y - this.mousePosQueue[this.mousePosQueue.length - 1].Y);
 
             if (Globals.yawSpeed > 0.08)
                 Globals.yawSpeed = 0.08 + (Globals.yawSpeed - 0.08) / 2;
@@ -123,9 +124,11 @@ var Main;
             if (Globals.pitchSpeed < -0.08)
                 Globals.pitchSpeed = -0.08 + (Globals.pitchSpeed + 0.08) / 3;
 
-            if (this.mouseXQueue.length > 8) {
-                this.mouseXQueue.shift();
-                this.mouseYQueue.shift();
+            Globals.yawSpeed = (Globals.yawSpeed + previousYawSpeed) / 2;
+            Globals.pitchSpeed = (Globals.pitchSpeed + previousPitchSpeed) / 2;
+
+            if (this.mousePosQueue.length > 8) {
+                this.mousePosQueue.shift();
             }
         };
 
@@ -140,8 +143,7 @@ var Main;
         };
 
         SvgSpinner.prototype.cb_onMouseLeave = function (ev) {
-            this.mouseXQueue = [];
-            this.mouseYQueue = [];
+            this.mousePosQueue = [];
         };
         return SvgSpinner;
     })(Main.HasCallbacks);

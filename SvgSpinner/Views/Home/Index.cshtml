@@ -4,18 +4,12 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>SvgSpinner</title>
-	<link href="@Url.Content("~/Content/SvgSpinner.css")" rel="stylesheet" />
-	<script src="@Url.Content("~/Scripts/raphael.js")"></script>
-	<script src="@Url.Content("~/Scripts/Globals.js")"></script>
-	<script src="@Url.Content("~/Scripts/Coordinate.js")"></script>
-	<script src="@Url.Content("~/Scripts/BezierCurve.js")"></script>
-	<script src="@Url.Content("~/Scripts/MovePenTo.js")"></script>
-	<script src="@Url.Content("~/Scripts/Path.js")"></script>
-	<script src="@Url.Content("~/Scripts/SpinnerModel.js")"></script>
-	<script src="@Url.Content("~/Scripts/HasCallbacks.js")"></script>
-	<script src="@Url.Content("~/Scripts/main.js")"></script>
+	@Scripts.Render("~/Scripts/raphael.js")
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/Scripts/bundle")
 </head>
 <body>
 	<div id="content">
@@ -26,7 +20,9 @@
 				@Html.Raw(svg)
 			}
 		</div>
-
+		<footer>
+			test
+		</footer>
 	</div>
 </body>
 </html>
