@@ -1,4 +1,3 @@
-
 module SvgCommand {
 
     export interface IShape {
