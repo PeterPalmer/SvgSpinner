@@ -119,7 +119,7 @@
     <Content Include="Content\SVG\apple.svg" />
     <Content Include="Content\SVG\biohazard.svg" />
     <Content Include="Content\SVG\chrome.svg" />
-    <Content Include="Content\SVG\cloupUp.svg" />
+    <Content Include="Content\SVG\cloudUp.svg" />
     <Content Include="Content\SVG\dollar.svg" />
     <Content Include="Content\SVG\firefox.svg" />
     <Content Include="Content\SVG\github.svg" />
@@ -329,7 +329,7 @@
   <ItemGroup>
     <Content Include="Scripts\IPoint.js.map">
       <DependentUpon>IPoint.ts</DependentUpon>
-	</Content>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
