@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{95FA71C8-ECA8-4EA6-B66C-EF9E0601370E}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SvgSpinner</RootNamespace>
+    <AssemblyName>SvgSpinner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\SvgSpinner.css" />
+    <Content Include="Content\SVG\alarm.svg" />
+    <Content Include="Content\SVG\android.svg" />
+    <Content Include="Content\SVG\anonumous.svg" />
+    <Content Include="Content\SVG\apple.svg" />
+    <Content Include="Content\SVG\biohazard.svg" />
+    <Content Include="Content\SVG\chrome.svg" />
+    <Content Include="Content\SVG\cloupUp.svg" />
+    <Content Include="Content\SVG\dollar.svg" />
+    <Content Include="Content\SVG\firefox.svg" />
+    <Content Include="Content\SVG\github.svg" />
+    <Content Include="Content\SVG\globe.svg" />
+    <Content Include="Content\SVG\hammerandscrewdriver.svg" />
+    <Content Include="Content\SVG\home.svg" />
+    <Content Include="Content\SVG\ie.svg" />
+    <Content Include="Content\SVG\linux.svg" />
+    <Content Include="Content\SVG\pen.svg" />
+    <Content Include="Content\SVG\pencil.svg" />
+    <Content Include="Content\SVG\run.svg" />
+    <Content Include="Content\SVG\skull.svg" />
+    <Content Include="Content\SVG\smallgear.svg" />
+    <Content Include="Content\SVG\smile.svg" />
+    <Content Include="Content\SVG\smile2.svg" />
+    <Content Include="Content\SVG\sun.svg" />
+    <Content Include="Content\SVG\svg.svg" />
+    <Content Include="Content\SVG\thunder.svg" />
+    <Content Include="Content\SVG\umbrella.svg" />
+    <Content Include="Content\SVG\windows.svg" />
+    <Content Include="Content\SVG\wrench.svg" />
+    <Content Include="Global.asax" />
+    <TypeScriptCompile Include="Scripts\main.ts" />
+    <TypeScriptCompile Include="Scripts\Coordinate.ts" />
+    <TypeScriptCompile Include="Scripts\BezierCurve.ts" />
+    <Content Include="Scripts\BezierCurve.js">
+      <DependentUpon>BezierCurve.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\BezierCurve.min.js">
+      <DependentUpon>BezierCurve.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Coordinate.js">
+      <DependentUpon>Coordinate.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Coordinate.min.js">
+      <DependentUpon>Coordinate.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\IShape.ts" />
+    <TypeScriptCompile Include="Scripts\HasCallbacks.ts" />
+    <TypeScriptCompile Include="Scripts\Globals.ts" />
+    <Content Include="Scripts\Globals.js">
+      <DependentUpon>Globals.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Globals.min.js">
+      <DependentUpon>Globals.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\HasCallbacks.js">
+      <DependentUpon>HasCallbacks.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\HasCallbacks.min.js">
+      <DependentUpon>HasCallbacks.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\IPoint.ts" />
+    <Content Include="Scripts\IPoint.js">
+      <DependentUpon>IPoint.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\IPoint.min.js">
+      <DependentUpon>IPoint.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\IShape.js">
+      <DependentUpon>IShape.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\IShape.min.js">
+      <DependentUpon>IShape.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\main.min.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\Path.ts" />
+    <TypeScriptCompile Include="Scripts\MovePenTo.ts" />
+    <Content Include="Scripts\MovePenTo.js">
+      <DependentUpon>MovePenTo.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\MovePenTo.min.js">
+      <DependentUpon>MovePenTo.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Path.js">
+      <DependentUpon>Path.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Path.min.js">
+      <DependentUpon>Path.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\raphael.d.ts" />
+    <Content Include="Scripts\raphael.js" />
+    <TypeScriptCompile Include="Scripts\SpinnerModel.ts" />
+    <Content Include="Scripts\SpinnerModel.js">
+      <DependentUpon>SpinnerModel.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\SpinnerModel.min.js">
+      <DependentUpon>SpinnerModel.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="UnitTests\tsUnit.ts" />
+    <TypeScriptCompile Include="Scripts\TouchEvent.ts" />
+    <Content Include="Scripts\TouchEvent.js">
+      <DependentUpon>TouchEvent.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\TouchEvent.min.js">
+      <DependentUpon>TouchEvent.ts</DependentUpon>
+    </Content>
+    <Content Include="UnitTests\app.css" />
+    <TypeScriptCompile Include="UnitTests\CoordinateTests.ts" />
+    <Content Include="UnitTests\CoordinateTests.js">
+      <DependentUpon>CoordinateTests.ts</DependentUpon>
+    </Content>
+    <Content Include="UnitTests\CoordinateTests.min.js">
+      <DependentUpon>CoordinateTests.ts</DependentUpon>
+    </Content>
+    <Content Include="UnitTests\default.htm" />
+    <TypeScriptCompile Include="UnitTests\TestRunner.ts" />
+    <Content Include="UnitTests\TestRunner.js">
+      <DependentUpon>TestRunner.ts</DependentUpon>
+    </Content>
+    <Content Include="UnitTests\TestRunner.min.js">
+      <DependentUpon>TestRunner.ts</DependentUpon>
+    </Content>
+    <Content Include="UnitTests\tsUnit.js">
+      <DependentUpon>tsUnit.ts</DependentUpon>
+    </Content>
+    <Content Include="UnitTests\tsUnit.min.js">
+      <DependentUpon>tsUnit.ts</DependentUpon>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\main.js.map">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Coordinate.js.map">
+      <DependentUpon>Coordinate.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BezierCurve.js.map">
+      <DependentUpon>BezierCurve.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\IShape.js.map">
+      <DependentUpon>IShape.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Path.js.map">
+      <DependentUpon>Path.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\SpinnerModel.js.map">
+      <DependentUpon>SpinnerModel.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\HasCallbacks.js.map">
+      <DependentUpon>HasCallbacks.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UnitTests\tsUnit.js.map">
+      <DependentUpon>tsUnit.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UnitTests\CoordinateTests.js.map">
+      <DependentUpon>CoordinateTests.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UnitTests\TestRunner.js.map">
+      <DependentUpon>TestRunner.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Globals.js.map">
+      <DependentUpon>Globals.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\MovePenTo.js.map">
+      <DependentUpon>MovePenTo.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\TouchEvent.js.map">
+      <DependentUpon>TouchEvent.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58157/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <!--Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" /-->
+  <Import Project="..\Tools\TypeScript\Microsoft.TypeScript.targets" />
+</Project>

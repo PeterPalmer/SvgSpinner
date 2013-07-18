@@ -1,0 +1,98 @@
+﻿/* Global Defaults */
+html, body {
+	margin: 0px;
+	padding: 5px;
+	border: 0px;
+}
+
+body {
+	font: 1em/1.25 Arial, Helvetica, sans-serif;
+}
+
+/* Headlines */
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Text Styles */
+p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, textarea {
+	margin: 0;
+	padding: 0;
+	font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif;
+}
+
+/* Links and Images */
+a, a:link, a:visited, a:active, a:hover {
+	text-decoration: underline;
+}
+
+img {
+	border: none;
+}
+
+/* Tables */
+table {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+/* Forms */
+form {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+label {
+	cursor: pointer;
+}
+
+canvas {
+	border: 1px solid silver;
+	width: 600px;
+	height: 600px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+svg {
+	display: inline;
+	margin: 0;
+	padding: 2px 0 0 2px;
+	width: 40px;
+	height: 40px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+svg:hover {
+	cursor: pointer;
+	border: 2px dashed silver;
+}
+
+svg.selected {
+	background-color: silver;
+}
+
+
+#icons {
+	width: 600px;
+	display: inline-block;
+}
+
+@media only screen and (min-width : 790px) {
+	#icons {
+		float: right;
+		width: 130px;
+	}
+
+	#content {
+		max-width: 750px;
+		margin: 0 auto;
+	}
+}
