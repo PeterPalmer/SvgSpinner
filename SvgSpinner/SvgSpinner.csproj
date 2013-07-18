@@ -111,6 +111,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\SvgSpinner.css" />
     <Content Include="Content\SVG\alarm.svg" />
     <Content Include="Content\SVG\android.svg" />

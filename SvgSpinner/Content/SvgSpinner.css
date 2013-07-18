@@ -62,7 +62,7 @@ canvas {
 svg {
 	display: inline;
 	margin: 0;
-	padding: 0;
+	padding: 2px 0 0 2px;
 	width: 40px;
 	height: 40px;
 	-moz-box-sizing: border-box;

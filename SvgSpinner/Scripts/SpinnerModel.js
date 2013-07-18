@@ -7,13 +7,12 @@
 var Shapes;
 (function (Shapes) {
     var SpinnerModel = (function () {
-        function SpinnerModel(pathStr) {
+        function SpinnerModel() {
             this.paths = [];
             this.minX = Number.MAX_VALUE;
             this.maxX = Number.MIN_VALUE;
             this.minY = Number.MAX_VALUE;
             this.maxY = Number.MIN_VALUE;
-            this.LoadSvgPath(pathStr);
         }
         SpinnerModel.prototype.LoadSvgPath = function (pathStr, fillColor, strokeColor) {
             if (typeof fillColor === "undefined") { fillColor = '#000000'; }

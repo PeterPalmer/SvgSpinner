@@ -15,8 +15,7 @@ module Shapes {
         private minY = Number.MAX_VALUE;
         private maxY = Number.MIN_VALUE;
 
-        constructor(pathStr: string) {
-            this.LoadSvgPath(pathStr);
+        constructor() {
         }
 
         public LoadSvgPath(pathStr: string, fillColor: string = '#000000', strokeColor: string = 'none'): void {
