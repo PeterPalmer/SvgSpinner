@@ -8,3 +8,4 @@ Reacts to mouse and touch events.
 
 ### Demo
 [svgspinner.apphb.com/](http://svgspinner.apphb.com/)
+
