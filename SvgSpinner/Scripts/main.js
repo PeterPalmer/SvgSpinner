@@ -1,14 +1,14 @@
+/// <reference path="IPoint.ts" />
+/// <reference path="TouchEvent.ts" />
+/// <reference path="HasCallbacks.ts" />
+/// <reference path="Globals.ts" />
+/// <reference path="SpinnerModel.ts" />
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="IPoint.ts" />
-/// <reference path="TouchEvent.ts" />
-/// <reference path="HasCallbacks.ts" />
-/// <reference path="Globals.ts" />
-/// <reference path="SpinnerModel.ts" />
 var Main;
 (function (Main) {
     var SvgSpinner = (function (_super) {
@@ -159,4 +159,4 @@ window.onload = function () {
     svgSpinner.RegisterEventHandlers();
     svgSpinner.SetupCanvas();
 };
-//@ sourceMappingURL=main.js.map
+//# sourceMappingURL=main.js.map

@@ -49,4 +49,4 @@ var SvgCommand;
     })();
     SvgCommand.BezierCurve = BezierCurve;
 })(SvgCommand || (SvgCommand = {}));
-//@ sourceMappingURL=BezierCurve.js.map
+//# sourceMappingURL=BezierCurve.js.map

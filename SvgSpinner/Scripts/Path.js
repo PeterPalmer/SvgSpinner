@@ -14,4 +14,4 @@ var SvgCommand;
     })();
     SvgCommand.Path = Path;
 })(SvgCommand || (SvgCommand = {}));
-//@ sourceMappingURL=Path.js.map
+//# sourceMappingURL=Path.js.map

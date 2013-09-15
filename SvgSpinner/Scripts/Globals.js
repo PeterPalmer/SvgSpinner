@@ -7,4 +7,4 @@ var Globals;
     Globals.pitchSpeed = 0.00;
     Globals.yawSpeed = 0.02;
 })(Globals || (Globals = {}));
-//@ sourceMappingURL=Globals.js.map
+//# sourceMappingURL=Globals.js.map

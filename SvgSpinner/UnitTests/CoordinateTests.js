@@ -1,11 +1,11 @@
+/// <reference path="../Scripts/Coordinate.ts" />
+/// <reference path="tsUnit.ts" />
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="../Scripts/Coordinate.ts" />
-/// <reference path="tsUnit.ts" />
 var UnitTests;
 (function (UnitTests) {
     var CoordinateTests = (function (_super) {
@@ -53,4 +53,4 @@ var UnitTests;
     })(tsUnit.TestClass);
     UnitTests.CoordinateTests = CoordinateTests;
 })(UnitTests || (UnitTests = {}));
-//@ sourceMappingURL=CoordinateTests.js.map
+//# sourceMappingURL=CoordinateTests.js.map

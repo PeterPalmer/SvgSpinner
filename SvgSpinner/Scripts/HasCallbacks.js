@@ -25,4 +25,4 @@ var Main;
     })();
     Main.HasCallbacks = HasCallbacks;
 })(Main || (Main = {}));
-//@ sourceMappingURL=HasCallbacks.js.map
+//# sourceMappingURL=HasCallbacks.js.map

@@ -29,4 +29,4 @@ var SvgCommand;
     })();
     SvgCommand.MovePenTo = MovePenTo;
 })(SvgCommand || (SvgCommand = {}));
-//@ sourceMappingURL=MovePenTo.js.map
+//# sourceMappingURL=MovePenTo.js.map

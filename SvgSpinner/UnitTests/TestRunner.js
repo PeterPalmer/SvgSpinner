@@ -39,4 +39,4 @@ if (typeof isMsScriptEngineContext === "undefined") {
 function getResult() {
     testRunner.runInScriptEngine();
 }
-//@ sourceMappingURL=TestRunner.js.map
+//# sourceMappingURL=TestRunner.js.map

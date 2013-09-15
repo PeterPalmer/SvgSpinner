@@ -114,4 +114,4 @@ var SvgCommand;
     })();
     SvgCommand.SpinnerModel = SpinnerModel;
 })(SvgCommand || (SvgCommand = {}));
-//@ sourceMappingURL=SpinnerModel.js.map
+//# sourceMappingURL=SpinnerModel.js.map

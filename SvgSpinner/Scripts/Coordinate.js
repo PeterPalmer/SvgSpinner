@@ -52,4 +52,4 @@ var SvgCommand;
     })();
     SvgCommand.Coordinate = Coordinate;
 })(SvgCommand || (SvgCommand = {}));
-//@ sourceMappingURL=Coordinate.js.map
+//# sourceMappingURL=Coordinate.js.map
