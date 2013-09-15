@@ -17,7 +17,9 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <VsToolsPath Condition="'$(VsToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VsToolsPath>
   </PropertyGroup>
 
-  <UsingTask TaskName="TypeScript.Tasks.VsTsc" AssemblyFile="$(VSToolsPath)\TypeScript\TypeScript.tasks.dll" />
+  <!--UsingTask TaskName="TypeScript.Tasks.VsTsc" AssemblyFile="$(VSToolsPath)\TypeScript\TypeScript.tasks.dll" /-->
+  <UsingTask TaskName="TypeScript.Tasks.VsTsc" AssemblyFile="$(MSBuildThisFileDirectory)\TypeScript.tasks.dll" />
+
 
   <PropertyGroup>
     <CompileDependsOn>
