@@ -52,7 +52,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   </PropertyGroup>
 
   <PropertyGroup>
-    <TscToolPath Condition="'$(TscToolPath)' == ''">$(MSBuildProgramFiles32)\Microsoft SDKs\TypeScript</TscToolPath>
+    <TscToolPath Condition="'$(TscToolPath)' == ''">$(MSBuildThisFileDirectory)</TscToolPath>
     <TscToolExe Condition="'$(TscToolExe)' == ''">tsc.exe</TscToolExe>
     <TscYieldDuringToolExecution Condition="'$(TscYieldDuringToolExecution)' == ''">true</TscYieldDuringToolExecution>
   </PropertyGroup>
@@ -69,7 +69,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
   <Target Name="CompileTypeScript" Condition="'$(BuildingProject)' != 'false'">
     <VsTsc
-      ToolPath="$(MSBuildThisFileDirectory)"
+      ToolPath="$(TscToolPath)"
       ToolExe="$(TscToolExe)"
       Configurations="$(TypeScriptBuildConfigurations)"
       FullPathsToFiles="@(TypeScriptCompile)"
